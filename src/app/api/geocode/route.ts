@@ -97,14 +97,10 @@ export async function GET(request: NextRequest) {
         `Nominatim failed for "${cleanQuery}": ${response.status}`
       );
 
-      return NextResponse.json(
-        [],
-        { status: 200 }
-      );
+      return NextResponse.json([], { status: 200 });
     }
 
-    const data: GeocodeResult[] =
-      await response.json();
+    const data: GeocodeResult[] = await response.json();
 
     // Save successful result in memory
     cache.set(cacheKey, data);
@@ -120,9 +116,6 @@ export async function GET(request: NextRequest) {
      * Don't crash the frontend map.
      * An empty array means location wasn't found.
      */
-    return NextResponse.json(
-      [],
-      { status: 200 }
-    );
+    return NextResponse.json([], { status: 200 });
   }
 }
