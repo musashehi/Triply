@@ -145,7 +145,7 @@ export default function TripsPage() {
 
   return (
     <main className="min-h-screen bg-[#f7f8fa] text-[#171717]">
-      {/* Floating Navbar */}
+      
       <div className="sticky top-0 z-[1000] px-4 pt-4">
         <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-[22px] border border-black/10 bg-white/80 px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.08)] backdrop-blur-xl md:px-5">
           <button
@@ -203,7 +203,7 @@ export default function TripsPage() {
       </div>
 
       <section className="mx-auto max-w-7xl px-6 pb-24 pt-10 md:pt-14">
-        {/* Dashboard Hero */}
+        
         <div className="relative overflow-hidden rounded-[36px] bg-[#050505] px-7 py-9 text-white shadow-[0_24px_80px_rgba(0,0,0,0.10)] md:px-10 md:py-11">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute -right-20 -top-32 h-96 w-96 rounded-full border border-white/10" />
@@ -253,7 +253,7 @@ export default function TripsPage() {
           </div>
         </div>
 
-        {/* Stats */}
+        
         {!loading && !error && trips.length > 0 && (
           <div className="relative z-20 -mt-5 grid gap-3 px-3 sm:grid-cols-2 lg:grid-cols-4 md:px-6">
             {[
@@ -284,7 +284,7 @@ export default function TripsPage() {
           </div>
         )}
 
-        {/* Content heading */}
+        
         <div className="mt-14 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">
@@ -302,7 +302,7 @@ export default function TripsPage() {
           )}
         </div>
 
-        {/* Loading */}
+        
         {loading && (
           <div className="mt-6 overflow-hidden rounded-[30px] border border-gray-200 bg-white p-12 text-center">
             <div className="mx-auto h-9 w-9 animate-spin rounded-full border-2 border-gray-200 border-t-black" />
@@ -310,14 +310,14 @@ export default function TripsPage() {
           </div>
         )}
 
-        {/* Error */}
+        
         {!loading && error && (
           <div className="mt-6 rounded-[30px] border border-red-100 bg-red-50 p-8 text-center">
             <p className="text-sm text-red-600">{error}</p>
           </div>
         )}
 
-        {/* Empty */}
+        
         {!loading && !error && trips.length === 0 && (
           <div className="mt-6 overflow-hidden rounded-[32px] border border-gray-200 bg-white">
             <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
@@ -352,7 +352,7 @@ export default function TripsPage() {
           </div>
         )}
 
-        {/* Trip cards */}
+        
         {!loading && !error && trips.length > 0 && (
           <div className="mt-6 grid gap-6 lg:grid-cols-2">
             {trips.map((trip, index) => {
@@ -368,7 +368,7 @@ export default function TripsPage() {
                   key={trip.id}
                   className="group overflow-hidden rounded-[30px] border border-gray-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(0,0,0,0.08)]"
                 >
-                  {/* Visual card top */}
+                  
                   <div className="relative overflow-hidden bg-[#090909] p-6 text-white">
                     <div className="pointer-events-none absolute inset-0">
                       <div className="absolute -right-16 -top-24 h-64 w-64 rounded-full border border-white/10" />
@@ -414,7 +414,7 @@ export default function TripsPage() {
                     </div>
                   </div>
 
-                  {/* Card body */}
+                  
                   <div className="p-6">
                     {trip.summary && (
                       <p className="line-clamp-2 min-h-12 text-sm leading-6 text-gray-500">

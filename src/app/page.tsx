@@ -132,12 +132,8 @@ function DestinationSlider() {
 
 export default function Home() {
   const router = useRouter();
-
-  // Auth
   const [user, setUser] = useState<User | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
-
-  // Planner
   const [destination, setDestination] = useState("");
 
   const [mapPosition, setMapPosition] = useState<[number, number]>([
@@ -167,16 +163,12 @@ export default function Home() {
   const [selectedInterests, setSelectedInterests] = useState<
     string[]
   >(["Sightseeing"]);
-
-  // Save trip
   const [savingTrip, setSavingTrip] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
   const [saveError, setSaveError] = useState("");
   const [savedTripId, setSavedTripId] = useState<string | null>(
     null
   );
-
-  // Load current user
   useEffect(() => {
     async function loadUser() {
       const {
@@ -391,11 +383,7 @@ export default function Home() {
       setSaveMessage("");
       setSaveError("");
       setSavedTripId(null);
-
-      // Move map to destination
       await searchDestination();
-
-      // Generate itinerary
       const response = await fetch(
         "/api/generate-trip",
         {
@@ -426,8 +414,6 @@ export default function Home() {
       setTrip(data);
 
       setGenerating(false);
-
-      // Find places without blocking itinerary display
       findTripPlaces(data);
     } catch (error) {
       console.error(error);
@@ -539,9 +525,9 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#f7f8fa] text-[#171717]">
-      {/* Floating Navbar */}
+      
       <div className="fixed left-0 right-0 top-0 z-[1000] px-3 pt-3 sm:px-4 sm:pt-4">
-<nav className="mx-auto flex max-w-7xl items-center justify-between rounded-[20px] border border-black/10 bg-white/90 px-3 py-2.5 shadow-[0_10px_40px_rgba(0,0,0,0.10)] backdrop-blur-xl sm:rounded-[22px] sm:px-4 sm:py-3 md:px-5">          {/* Logo */}
+<nav className="mx-auto flex max-w-7xl items-center justify-between rounded-[20px] border border-black/10 bg-white/90 px-3 py-2.5 shadow-[0_10px_40px_rgba(0,0,0,0.10)] backdrop-blur-xl sm:rounded-[22px] sm:px-4 sm:py-3 md:px-5">          
           <button
             type="button"
             onClick={() => router.push("/")}
@@ -561,7 +547,7 @@ export default function Home() {
             </div>
           </button>
 
-          {/* Navigation */}
+          
           <div className="flex items-center gap-2">
             {!authLoading && user && (
               <button
@@ -615,13 +601,13 @@ export default function Home() {
         </nav>
       </div>
 
-      {/* Hero + Planner */}
+      
       <section className="mx-auto max-w-7xl px-3 pb-14 pt-24 sm:px-6 sm:pb-20 sm:pt-28 md:pt-32">
         <div className="overflow-hidden rounded-[26px] border border-black/5 bg-white shadow-[0_24px_80px_rgba(0,0,0,0.07)] sm:rounded-[36px]">
           <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
-            {/* Hero side */}
+            
             <div className="relative overflow-hidden bg-[#050505] px-5 py-9 text-white sm:px-7 sm:py-12 md:px-10 md:py-14 lg:min-h-[700px] lg:px-12 lg:py-16">
-              {/* Premium background */}
+              
               <div className="pointer-events-none absolute inset-0">
                 <div className="absolute -left-28 top-24 h-72 w-72 rounded-full bg-white/[0.07] blur-3xl" />
                 <div className="absolute -right-24 -top-20 h-96 w-96 rounded-full bg-white/[0.09] blur-3xl" />
@@ -638,7 +624,7 @@ export default function Home() {
                   }}
                 />
 
-                {/* Travel orbit */}
+                
                 <div className="absolute -right-36 top-8 h-[440px] w-[440px] rounded-full border border-white/10">
                   <div className="absolute inset-[54px] rounded-full border border-white/[0.08]" />
                   <div className="absolute inset-[108px] rounded-full border border-white/[0.07]" />
@@ -650,7 +636,7 @@ export default function Home() {
                   <div className="absolute bottom-[112px] right-[52px] h-2 w-2 rounded-full bg-white/70" />
                 </div>
 
-                {/* Animated destination slider */}
+                
                 <DestinationSlider />
               </div>
 
@@ -723,7 +709,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Planner side */}
+            
             <div className="bg-white px-5 py-8 sm:px-6 sm:py-9 md:px-10 md:py-12 lg:px-12">
               <div className="mb-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">
@@ -832,7 +818,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Generated Trip */}
+        
         {trip && (
           <motion.div
             initial={{ opacity: 0, y: 28 }}
@@ -840,7 +826,7 @@ export default function Home() {
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10"
           >
-            {/* Destination command center */}
+            
             <div className="relative overflow-hidden rounded-[26px] bg-[#050505] p-5 text-white shadow-[0_30px_90px_rgba(0,0,0,0.18)] sm:rounded-[36px] sm:p-7 md:p-10">
               <div className="pointer-events-none absolute inset-0">
                 <div className="absolute -right-28 -top-40 h-[480px] w-[480px] rounded-full border border-white/10" />
@@ -912,7 +898,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Budget meter */}
+                
                 <div className="mt-9 border-t border-white/10 pt-6">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                     <div>
@@ -982,7 +968,7 @@ export default function Home() {
               </div>
             )}
 
-            {/* Day navigation */}
+            
             <div className="mt-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-400">
@@ -1014,7 +1000,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Itinerary + map */}
+            
             <div className="mt-5 grid min-w-0 items-start gap-5 sm:mt-6 sm:gap-6 lg:grid-cols-[minmax(0,1.12fr)_minmax(360px,0.88fr)] xl:grid-cols-[minmax(0,1.12fr)_minmax(390px,0.88fr)]">
               <div className="space-y-5">
                 {trip.days?.map((day: any, dayIndex: number) => (
@@ -1178,7 +1164,7 @@ export default function Home() {
           </motion.div>
         )}
 
-        {/* Features */}
+        
         <div className="mt-8 grid gap-4 text-sm text-gray-500 md:grid-cols-3">
           <div className="text-center">
             <span className="font-medium text-black">

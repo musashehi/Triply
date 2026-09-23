@@ -133,9 +133,7 @@ useEffect(() => {
       setPlaces([]);
       setSelectedPlace(null);
 
-      /*
-       * Find destination first.
-       */
+      
       const destinationResponse = await fetch(
         `/api/geocode?q=${encodeURIComponent(
           trip!.destination
@@ -165,17 +163,12 @@ useEffect(() => {
         ]);
       }
 
-      /*
-       * Wait before starting activity requests.
-       * This avoids hitting Nominatim too quickly.
-       */
+      
       await wait(1500);
 
       if (cancelled) return;
 
-      /*
-       * Build activity list.
-       */
+      
       const activities =
         trip!.days?.flatMap((day) =>
           (day.activities || []).map((activity) => ({
@@ -186,9 +179,7 @@ useEffect(() => {
 
       const foundPlaces: Place[] = [];
 
-      /*
-       * Avoid geocoding duplicate places.
-       */
+      
       const searchedQueries = new Set<string>();
 
       for (const activity of activities) {
@@ -200,9 +191,7 @@ useEffect(() => {
         const normalizedQuery =
           query.toLowerCase();
 
-        /*
-         * Skip duplicate activity/place queries.
-         */
+        
         if (searchedQueries.has(normalizedQuery)) {
           continue;
         }
@@ -218,10 +207,7 @@ useEffect(() => {
 
           if (cancelled) return;
 
-          /*
-           * If Nominatim rate-limits us,
-           * wait longer before continuing.
-           */
+          
           if (response.status === 429) {
             console.warn(
               `Rate limited while locating ${activity.name}`
@@ -263,9 +249,7 @@ useEffect(() => {
             setPlaces([...foundPlaces]);
           }
 
-          /*
-           * Keep requests comfortably spaced.
-           */
+          
           await wait(1500);
         } catch (error) {
           if (cancelled) return;
@@ -390,7 +374,7 @@ useEffect(() => {
 
   return (
     <main className="min-h-screen bg-[#f7f8fa] text-[#171717]">
-      {/* Floating Navbar */}
+      
       <div className="sticky top-0 z-[1000] px-4 pt-4">
         <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-[22px] border border-black/10 bg-white/80 px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.08)] backdrop-blur-xl md:px-5">
           <button type="button" onClick={() => router.push("/")} className="group flex items-center gap-2.5">
@@ -417,7 +401,7 @@ useEffect(() => {
           <span>←</span> Back to My Trips
         </button>
 
-        {/* Premium trip hero */}
+        
         <div className="relative overflow-hidden rounded-[36px] bg-[#050505] px-7 py-9 text-white shadow-[0_24px_80px_rgba(0,0,0,0.10)] md:px-10 md:py-11 lg:px-12">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute -right-24 -top-40 h-[430px] w-[430px] rounded-full border border-white/10" />
@@ -472,7 +456,7 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* Itinerary heading + day navigator */}
+        
         <div className="mt-14 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">Your itinerary</p>
@@ -487,7 +471,7 @@ useEffect(() => {
         </div>
 
         <div className="mt-7 grid items-start gap-7 lg:grid-cols-[minmax(0,1.12fr)_minmax(390px,0.88fr)]">
-          {/* Timeline */}
+          
           <div className="space-y-7">
             {trip.days?.map((day) => (
               <section id={`day-${day.day}`} key={day.day} className="scroll-mt-28 overflow-hidden rounded-[30px] border border-gray-200 bg-white shadow-[0_10px_35px_rgba(0,0,0,0.035)]">
@@ -531,7 +515,7 @@ useEffect(() => {
             ))}
           </div>
 
-          {/* Premium sticky map */}
+          
           <aside ref={mapSectionRef} className="scroll-mt-28 lg:sticky lg:top-28">
             <div className="overflow-hidden rounded-[30px] border border-gray-200 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.06)]">
               <div className="bg-[#0a0a0a] px-6 py-5 text-white">

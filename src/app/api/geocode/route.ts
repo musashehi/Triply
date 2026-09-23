@@ -27,17 +27,12 @@ export async function GET(request: NextRequest) {
 
   const cleanQuery = query.trim();
   const cacheKey = cleanQuery.toLowerCase();
-
-  // Return cached result without contacting Nominatim again
   if (cache.has(cacheKey)) {
     return NextResponse.json(cache.get(cacheKey));
   }
 
   try {
-    /*
-     * Keep at least 1.2 seconds between
-     * requests sent from our server to Nominatim.
-     */
+   
     const now = Date.now();
     const elapsed = now - lastRequestTime;
 
@@ -67,10 +62,7 @@ export async function GET(request: NextRequest) {
       cache: "no-store",
     });
 
-    /*
-     * If Nominatim rate-limits the request,
-     * wait and retry once.
-     */
+    
     if (response.status === 429) {
       console.warn(
         `Nominatim rate limit for: ${cleanQuery}. Retrying...`
@@ -101,8 +93,6 @@ export async function GET(request: NextRequest) {
     }
 
     const data: GeocodeResult[] = await response.json();
-
-    // Save successful result in memory
     cache.set(cacheKey, data);
 
     return NextResponse.json(data);
@@ -112,10 +102,7 @@ export async function GET(request: NextRequest) {
       error
     );
 
-    /*
-     * Don't crash the frontend map.
-     * An empty array means location wasn't found.
-     */
+    
     return NextResponse.json([], { status: 200 });
   }
 }

@@ -79,7 +79,7 @@ export default function GenerateButton({
   if (loading) {
     return (
       <div className="mt-2 w-full overflow-hidden rounded-[22px] bg-black px-5 py-4 text-white shadow-[0_14px_35px_rgba(0,0,0,0.16)]">
-        {/* Top */}
+        
         <div className="flex items-center justify-between gap-4">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/35">
@@ -108,9 +108,9 @@ export default function GenerateButton({
           </motion.span>
         </div>
 
-        {/* Flight path */}
+        
         <div className="relative mt-5 h-8">
-          {/* Background route */}
+          
           <div className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 overflow-hidden rounded-full bg-white/15">
             <motion.div
               className="h-full rounded-full bg-white"
@@ -124,7 +124,7 @@ export default function GenerateButton({
             />
           </div>
 
-          {/* Destination */}
+          
           <div className="absolute right-0 top-1/2 h-3 w-3 -translate-y-1/2 rounded-full border-2 border-white bg-black">
             <motion.div
               className="absolute inset-[-5px] rounded-full border border-white/30"
@@ -139,7 +139,7 @@ export default function GenerateButton({
             />
           </div>
 
-          {/* Airplane */}
+          
           <motion.div
             className="absolute top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white text-sm text-black shadow-[0_4px_18px_rgba(255,255,255,0.25)]"
             animate={{
@@ -168,7 +168,7 @@ export default function GenerateButton({
           </motion.div>
         </div>
 
-        {/* Bottom */}
+        
         <div className="mt-2 flex items-center justify-between">
           <span className="text-[10px] text-white/30">
             Your destination

@@ -166,8 +166,6 @@ export default function Map({
         setRouteLoading(true);
         setRouteError("");
         setRoute([]);
-
-        // OSRM expects longitude,latitude
         const coordinates = dayPlaces
           .map(
             (place) =>
@@ -220,7 +218,7 @@ export default function Map({
 
   return (
     <div>
-      {/* Day filters */}
+      
       {places.length > 0 && (
         <div className="mb-4 flex flex-wrap gap-2">
           <button
@@ -277,7 +275,7 @@ export default function Map({
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
-          {/* Destination marker */}
+          
           {selectedDay === null && (
             <Marker
               position={position}
@@ -291,7 +289,7 @@ export default function Map({
             </Marker>
           )}
 
-          {/* Activity markers */}
+          
           {visiblePlaces.map((place, index) => {
             const key = `${place.day}-${place.name}`;
 
@@ -326,7 +324,7 @@ export default function Map({
             );
           })}
 
-          {/* OSRM route */}
+          
           {route.length > 1 && (
             <Polyline
               positions={route}
@@ -337,7 +335,7 @@ export default function Map({
         </MapContainer>
       </div>
 
-      {/* Route status */}
+      
       {routeLoading && (
         <p className="mt-3 text-center text-xs text-gray-400">
           Creating route for Day {selectedDay}...

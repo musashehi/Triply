@@ -84,7 +84,7 @@ export default function LoginPage() {
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#efede8] px-4 py-5 text-[#171717] sm:px-6 sm:py-7">
-      {/* Ambient background */}
+      
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-40 -top-40 h-[520px] w-[520px] rounded-full bg-white/80 blur-3xl" />
         <div className="absolute -bottom-56 -right-36 h-[620px] w-[620px] rounded-full bg-black/[0.06] blur-3xl" />
@@ -100,7 +100,7 @@ export default function LoginPage() {
         />
       </div>
 
-      {/* Header */}
+      
       <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between">
         <button
           type="button"
@@ -129,14 +129,14 @@ export default function LoginPage() {
         </button>
       </header>
 
-      {/* Main login experience */}
+      
       <section className="relative z-10 mx-auto flex min-h-[calc(100vh-118px)] max-w-7xl items-start justify-center py-6 md:items-center md:py-8">
         <div
           className="relative w-full max-w-[1120px]"
           style={{ perspective: "1800px" }}
         >
           <div className="relative min-h-[820px] overflow-visible rounded-[38px] border border-black/10 bg-[#f8f7f3] shadow-[0_35px_100px_rgba(0,0,0,0.18)] md:min-h-[680px] md:overflow-hidden">
-            {/* Desktop static form */}
+            
             <div className="hidden h-full min-h-[680px] md:grid md:grid-cols-2">
               <div className="flex items-center justify-center px-10 py-14 lg:px-16">
                 <AuthForm
@@ -173,7 +173,7 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Moving 3D cover */}
+            
             <motion.div
               className="absolute bottom-0 left-0 top-0 z-30 hidden w-1/2 md:block"
               initial={false}
@@ -200,7 +200,7 @@ export default function LoginPage() {
               }}
             >
               <div className="absolute inset-0 overflow-hidden rounded-[34px] bg-[#080808] text-white shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
-                {/* Cover background */}
+                
                 <div className="pointer-events-none absolute inset-0">
                   <motion.div
                     className="absolute -right-32 -top-36 h-[430px] w-[430px] rounded-full border border-white/10"
@@ -229,7 +229,7 @@ export default function LoginPage() {
                     }}
                   />
 
-                  {/* route */}
+                  
                   <svg
                     viewBox="0 0 600 680"
                     className="absolute inset-0 h-full w-full opacity-30"
@@ -341,7 +341,7 @@ export default function LoginPage() {
                   </div>
                 </div>
 
-                {/* fake fold highlight */}
+                
                 <motion.div
                   className="pointer-events-none absolute bottom-0 top-0 w-16"
                   animate={{
@@ -362,10 +362,10 @@ export default function LoginPage() {
               </div>
             </motion.div>
 
-            {/* Mobile - animated sliding auth experience */}
+            
             <div className="relative z-20 overflow-visible md:hidden">
               <div className="relative min-h-[820px]">
-                {/* Mobile black cover */}
+                
                 <motion.div
                   initial={false}
                   animate={{
@@ -479,7 +479,7 @@ export default function LoginPage() {
                   />
                 </motion.div>
 
-                {/* Sign-in form */}
+                
                 <motion.div
                   initial={false}
                   animate={{
@@ -512,7 +512,7 @@ export default function LoginPage() {
                   />
                 </motion.div>
 
-                {/* Sign-up form */}
+                
                 <motion.div
                   initial={false}
                   animate={{
@@ -548,7 +548,7 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Ground shadow */}
+          
           <div className="pointer-events-none absolute -bottom-8 left-[8%] right-[8%] -z-10 h-16 rounded-[50%] bg-black/20 blur-3xl" />
         </div>
       </section>
